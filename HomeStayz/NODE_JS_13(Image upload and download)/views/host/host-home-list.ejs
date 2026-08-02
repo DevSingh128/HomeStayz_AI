@@ -1,0 +1,60 @@
+<%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/nav') %>
+  
+  <main class="container mx-auto p-6 mt-10 max-w-5xl">
+    <h2 class="text-3xl font-bold text-center text-red-500 mb-8">Host Registered Homes</h2>
+
+    <!-- Grid Layout for Small Cards -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <% if (registeredHomes.length > 0) { %>
+        <% registeredHomes.forEach(home => { %>
+          
+          <!-- Stacked Layout Card -->
+          <div class="bg-white border rounded-xl p-3 shadow-sm flex flex-col justify-between">
+            <div>
+              <!-- Smaller, Square Image (w-full fills the card width)
+               /images/<%= home.photourl %> -->
+              
+              <img src="/uploads/<%= home.photourl %>" alt="<%= home.houseName %>" class="w-full h-32 object-cover rounded-lg bg-gray-100 mb-3" />
+              
+              <!-- Details Below Image -->
+              <h3 class="text-base font-semibold text-gray-800 line-clamp-1"><%= home.houseName %></h3>
+              <p class="text-xs text-gray-500 line-clamp-1"><%= home.location %></p>
+            </div>
+
+            <div class="bg-white border rounded-xl p-3 shadow-sm flex flex-col justify-between">
+                <% if (home.rulesPdf) { %>
+                <a href="/uploads/<%= home.rulesPdf %>" target="_blank" class="text-blue-600 text-sm underline">View Rules PDF</a>
+                <% } %>
+            </div>
+
+            <div class="mt-2 flex justify-between items-center">
+              <span class="text-red-500 font-bold text-sm">₹<%= home.price %></span>
+              <span class="text-yellow-500 text-xs">★ <%= home.rating %></span>
+            </div>
+
+            <a href="/host/edit-home/<%=home._id%>?editing=true"
+              
+            class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm mt-3 w-full font-medium">
+            edit
+            </a>
+
+
+            <form action="/host/delete-home/<%=home._id%>" method="POST">
+              <button class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm mt-2 w-full font-medium">
+            delete
+            </button>
+            </form>
+
+          </div>
+
+        <% }) %>
+      <% } else { %>
+        <p class="text-center text-gray-500 col-span-full py-8">No homes registered yet.</p>
+      <% } %>
+    </div>
+  </main>
+</body>
+</html>

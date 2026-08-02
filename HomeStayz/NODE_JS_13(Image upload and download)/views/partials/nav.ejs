@@ -1,0 +1,127 @@
+<header class="bg-red-500 text-white p-4 shadow-md">
+  <nav class="container mx-auto flex justify-between items-center">
+    <ul class="flex space-x-4">
+      <li>
+        <svg width="300" height="70" viewBox="0 0 300 70" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Logo Icon -->
+  <rect x="5" y="5" width="50" height="50" rx="10" fill="#D62828"/>
+
+  <!-- Hotel -->
+  <polygon points="30,10 16,20 44,20" fill="white"/>
+  <rect x="18" y="20" width="24" height="25" rx="2" fill="white"/>
+
+  <!-- Windows -->
+  <rect x="22" y="24" width="3" height="3" fill="#D62828"/>
+  <rect x="28" y="24" width="3" height="3" fill="#D62828"/>
+  <rect x="34" y="24" width="3" height="3" fill="#D62828"/>
+
+  <rect x="22" y="30" width="3" height="3" fill="#D62828"/>
+  <rect x="28" y="30" width="3" height="3" fill="#D62828"/>
+  <rect x="34" y="30" width="3" height="3" fill="#D62828"/>
+
+  <!-- Door -->
+  <rect x="27" y="35" width="6" height="10" rx="1" fill="#D62828"/>
+
+  <!-- Brand -->
+  <text x="70" y="38"
+        font-family="Poppins, Arial, sans-serif"
+        font-size="28"
+        font-weight="700"
+        fill="#1F2937">
+    Hotel
+  </text>
+
+  <!-- Stayz -->
+  <text x="145" y="38"
+        font-family="Poppins, Arial, sans-serif"
+        font-size="28"
+        font-weight="700"
+        fill="#FFFFFF"
+        stroke="#D62828"
+        stroke-width="1.5"
+        paint-order="stroke fill">
+    Stayz
+  </text>
+
+</svg>
+      </li>
+  
+      <li>
+        <a
+          href="/"
+          class="hover:bg-red-400 py-2 px-4 rounded transition duration-300"
+          >Index pg</a
+        >
+      </li>
+
+      <% if (isLoggedIn) { %>
+        <% if (user && user.userType === 'guest') { %>
+          <li>
+            <a
+              href="/homes"
+              class="hover:bg-red-400 py-2 px-4 rounded transition duration-300"
+              >Homespg</a
+            >
+          </li>
+          <li>
+            <a
+              href="/bookings"
+              class="hover:bg-red-400 py-2 px-4 rounded transition duration-300"
+              >Bookings</a
+            >
+          </li>
+          <li>
+            <a
+              href="/favourite-list"
+              class="hover:bg-red-400 py-2 px-4 rounded transition duration-300"
+              >favouritepg</a
+            >
+          </li>
+        <% } else { %>
+          <li>
+            <a
+              href="/host/host-home-list"
+              class="hover:bg-red-400 py-2 px-4 rounded transition duration-300"
+              >hosthomespg</a
+            >
+          </li>
+          <li>
+            <a
+              href="/host/add-home"
+              class="hover:bg-red-400 py-2 px-4 rounded transition duration-300"
+              >Add Home</a
+            >
+          </li>
+        <% } %>
+      <% } %>
+
+      <% if (!isLoggedIn) { %>
+        <li>
+          <a
+            href="/signup"
+            class="hover:bg-red-400 py-2 px-4 rounded transition duration-300"
+            >signup</a
+          >
+        </li>
+        <li>
+          <a
+            href="/login"
+            class="hover:bg-red-400 py-2 px-4 rounded transition duration-300"
+            >Login</a
+          >
+        </li>
+      <% } else { %>
+        <li>
+          <form action="/logout" method="POST">
+            <button
+              type="submit"
+              class="hover:bg-red-400 py-2 px-4 rounded transition duration-300"
+              >Logout</button
+            >
+          </form>
+        </li>
+      <% } %>
+    </ul>
+  </nav>
+</header>
