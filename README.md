@@ -1,0 +1,1 @@
+# Airbnb (renamed to homestayz)
