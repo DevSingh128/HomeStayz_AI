@@ -7,7 +7,6 @@ const session = require('express-session');
 const multer = require('multer');
 const {MongoStore} = require('connect-mongo');
 const mongoose = require('mongoose');
-const db_path = "mongodb+srv://rootuser:rootuser@cluster1.3hqqkfm.mongodb.net/airbnb?retryWrites=true&w=majority";
 
 //local module
 const storeRouter = require("./routes/storeRouter");
